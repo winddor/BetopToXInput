@@ -1,0 +1,33 @@
+name: Build BetopToXInput
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'   # 如果项目是 net8.0，改成 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Publish
+        run: >
+          dotnet publish .\BetopToXInput.App\BetopToXInput.App.csproj
+          -c Release
+          -r win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -o .\publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BetopToXInput.App
+          path: .\publish
