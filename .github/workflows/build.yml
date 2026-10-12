@@ -17,11 +17,11 @@ jobs:
           dotnet-version: '10.0.x'        # 根据你的项目实际版本修改
 
       - name: 还原依赖
-        run: dotnet restore .BetopToXInput/BetopToXInput-main/src/BetopToXInput.App/BetopToXInput.App.csproj
+        run: dotnet restore .BetopToXInput-main/src/BetopToXInput.App/BetopToXInput.App.csproj
 
       - name: 发布单文件 exe
         run: >
-          dotnet publish .BetopToXInput/BetopToXInput-main/src/BetopToXInput.App/BetopToXInput.App.csproj
+          dotnet publish .BetopToXInput-main/src/BetopToXInput.App/BetopToXInput.App.csproj
           -c Release
           -r win-x64
           --self-contained true
