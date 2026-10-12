@@ -9,12 +9,12 @@ jobs:
 
     steps:
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5          # 从 v4 升级到 v5
 
       - name: 安装 .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5     # 从 v4 升级到 v5
         with:
-          dotnet-version: '10.0.x'   # 如果项目是 net8.0-windows，改成 '8.0.x'
+          dotnet-version: '10.0.x'        # 根据你的项目实际版本修改
 
       - name: 还原依赖
         run: dotnet restore .BetopToXInput-main/src/BetopToXInput.App/BetopToXInput.App.csproj
